@@ -1,0 +1,435 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --biru: #0052b4;
+    --biru-tua: #0b3a78;
+    --bg: #eaf3ff;
+    --kotak: #e6f0fd;
+    --kotak-hover: #d3e4fb;
+    --teks: #1c2b44;
+    --pink-hover: #f4b6d0;
+}
+
+body {
+    font-family: 'Jost', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--teks);
+    overflow-x: hidden;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 16px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+}
+
+header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0b2f6b;
+}
+
+header input {
+    width: 300px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #b8d4f8;
+    border-radius: 8px;
+    background: #fff;
+    outline: none;
+}
+
+header input:focus {
+    border-color: var(--biru);
+}
+
+/* ===== LAYOUT GRID ===== */
+.layout {
+    flex: 1;
+    display: grid;
+
+    grid-template-columns:
+        200px minmax(0, 2fr)
+        minmax(0, 1.1fr)
+        minmax(0, 1.5fr);
+
+    grid-template-rows: auto 1fr auto auto;
+
+    grid-template-areas:
+        "nav main main main"
+        "nav aside section1 section2"
+        "nav footer footer footer"
+        ". setting setting setting";
+
+    gap: 12px;
+}
+
+.layout > * {
+    min-width: 0;
+    scroll-margin-top: 20px;
+}
+
+/* ===== SIDEBAR ===== */
+nav {
+    grid-area: nav;
+    background: var(--biru);
+    border-radius: 10px;
+    padding: 24px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    align-self: stretch;
+}
+
+nav a {
+    display: block;
+    padding: 14px 36px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    background: var(--pink-hover);
+    color: var(--teks);
+}
+
+nav a.active {
+    background: var(--biru-tua);
+    color: #fff;
+    box-shadow: inset 4px 0 #f4b6d0;
+}
+
+nav a.setting {
+    color: #5eb3ff;
+}
+
+nav a.signout {
+    color: #f6a15e;
+}
+
+/* ===== MAIN ===== */
+main {
+    grid-area: main;
+    background: var(--biru);
+    border-radius: 10px;
+    padding: 22px 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+main h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+main p {
+    margin-top: 10px;
+    max-width: 420px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #dce9ff;
+}
+
+/* ===== FOTO MAHASISWA ===== */
+.avatar img {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    border-radius: 50%;
+    border: 3px solid #cfe2fb;
+    background: #6c5ce7;
+    object-fit: cover;
+    position: relative;
+    right: 25px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ===== KARTU DASHBOARD ===== */
+aside,
+.section1,
+.section2,
+footer,
+#setting {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 14px rgba(0, 82, 180, 0.10);
+    transition: 0.3s ease;
+}
+
+aside {
+    grid-area: aside;
+}
+
+.section1 {
+    grid-area: section1;
+}
+
+.section2 {
+    grid-area: section2;
+}
+
+footer {
+    grid-area: footer;
+}
+
+#setting {
+    grid-area: setting;
+}
+
+h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--teks);
+    margin-bottom: 12px;
+}
+
+/* ===== GRAFIK STATISTIK ===== */
+aside img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+aside:hover,
+.section1:hover,
+.section2:hover {
+    background: var(--pink-hover);
+}
+
+/* ===== PROGRES KELAS & AKTIVITAS ===== */
+.section1,
+.section2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section1 h3,
+.section2 h3 {
+    margin-bottom: 0;
+}
+
+.item {
+    flex: 1;
+    background: var(--kotak);
+    border-radius: 8px;
+    padding: 12px 14px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+
+    transition: 0.3s ease;
+}
+
+.item:hover {
+    background: var(--kotak-hover);
+}
+
+.item.selected {
+    background: #c3dbfa;
+}
+
+.item strong {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--teks);
+}
+
+.item span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--biru);
+}
+
+.item .tanggal {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--biru);
+}
+
+/* ===== LAMPIRAN ===== */
+.lampiran {
+    background: var(--kotak);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+
+    font-size: 12px;
+    color: #3c4a63;
+    word-break: break-word;
+}
+
+.lampiran:last-child {
+    margin-bottom: 0;
+}
+
+.lampiran strong {
+    color: var(--teks);
+}
+
+.lampiran a {
+    margin-left: 12px;
+    font-weight: 700;
+    color: var(--biru);
+    text-decoration: underline;
+}
+
+.lampiran a:hover {
+    color: var(--biru-tua);
+}
+
+/* ===== MAHASISWA ===== */
+#mahasiswa {
+    scroll-margin-top: 20px;
+    transition: 0.3s ease;
+}
+
+/* ===== SETTING ===== */
+#setting {
+    padding: 20px;
+    line-height: 1.8;
+}
+
+#setting p {
+    font-size: 13px;
+    color: var(--teks);
+}
+
+/* ===== EFEK KOLOM AKTIF ===== */
+.section-active {
+    outline: 3px solid var(--biru);
+    outline-offset: 3px;
+
+    box-shadow: 0 0 18px rgba(0, 82, 180, 0.25);
+
+    transition: outline 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* ===== PENCARIAN ===== */
+.hidden {
+    display: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
+
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+
+        grid-template-areas:
+            "nav"
+            "main"
+            "aside"
+            "section1"
+            "section2"
+            "footer"
+            "setting";
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 8px;
+    }
+
+    nav a {
+        padding: 8px 14px;
+    }
+
+    header input {
+        width: 160px;
+    }
+
+    main h2 {
+        font-size: 19px;
+    }
+
+    .avatar img {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+/* ===== WARNA SOROTAN MENU ===== */
+
+main.sorot-mahasiswa {
+    background: #6a3fc9;
+}
+
+aside.sorot-statistik {
+    background: #ffe3a3;
+}
+
+.section1.sorot-kelas {
+    background: #c9f2d4;
+}
+
+.section2.sorot-aktifitas {
+    background: #e3d4ff;
+}
+
+footer.sorot-dokumen {
+    background: #ffd6d6;
+}
+
+#setting.sorot-setting {
+    background: #d3e4fb;
+}
+
+/* ===== EFEK PINK POINTER ===== */
+
+.pink {
+    background: #f4b6d0;
+}
+
+/* ===== TANDA KOLOM TERPANGGIL ===== */
+
+.section-active {
+    outline: 3px solid #0052b4;
+    outline-offset: 3px;
+    box-shadow: 0 0 15px rgba(0, 82, 180, 0.25);
+    transition: 0.3s ease;
+}
